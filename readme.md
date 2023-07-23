@@ -31,3 +31,24 @@ return -1;
 |     NoInstructionJump | 3.437 ms | 0.0485 ms | 0.0430 ms |
 
 
+## [sharplab](https://sharplab.io)
+
+Convert to JIT Asm
+
+```
+C.C1(Int32)
+    L0000: cmp edx, 1
+    L0003: jne short L000b
+    L0005: mov eax, 0xffffffff
+    L000a: ret
+    L000b: lea eax, [edx+1]
+    L000e: ret
+
+C.C2(Int32)
+    L0000: cmp edx, 1
+    L0003: je short L0009
+    L0005: lea eax, [edx+1]
+    L0008: ret
+    L0009: mov eax, 0xffffffff
+    L000e: ret
+```
